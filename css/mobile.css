@@ -1,0 +1,375 @@
+@charset "UTF-8";
+
+/* =========================================================
+  mobile.css  (responsive.css 뒤에 로드)
+  모바일(~743) 시안 전용. PC/태블릿에는 영향 없음
+   ========================================================= */
+
+
+@media (max-width: 1023px) {
+
+  
+/* ---------- 메인 이미지만 변경 (높이는 건드리지 않음) ---------- */
+
+@media (min-width: 1024px) and (max-width: 1355px) {
+  main {
+    background: url("../img/main02.jpg") calc(100% + 65px) 40% / cover no-repeat;
+    background-attachment: fixed;
+  }
+
+  .desc_wrap {
+    top: 600px;
+    left: 60px;
+    text-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    color: #fff;
+  }
+  .play {
+    position: absolute;
+    top: 40%;
+    left: calc(50% - 25px);
+    animation: playPulse 1.2s ease-in-out infinite;
+  }
+
+  .main_wrap::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 40%;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.6));
+  }
+}
+
+
+
+
+@media (max-width: 743px) {
+  .banner { height: 48px; }
+  .banner_wrap { animation-duration: 32s; }
+  .ban_txt, .ban_txt.only_m  { 
+    height: 48px; 
+    padding: 0 24px;
+    font-size: 13px;
+    line-height: 20px; 
+  }
+  .page { padding-top: 48px; }
+  .desc_wrap {
+    top: 80%;
+    text-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    color: #fff;
+  }
+
+  main {
+    height: calc(100vh - 48px);
+    height: calc(100svh - 48px);
+  }
+
+  .sns img {display: none;}
+  .hamburger { width: 48px; height: 48px; margin-right: 12px; }
+  .hamburger span { width: 32px; }
+  .hamburger button { gap: 6px; }
+  .gnb.on {
+    /* 스크롤 300px 이후의 스타일 */
+    background: transparent;
+    top: 40px;
+    left: 0;
+    opacity: 1;
+  }
+  .gnb_logo img {
+    width: 60px;
+    filter: brightness(0) invert(1);
+  }
+
+  .logo_wrap img { margin: 20px; width: 150px; }
+  .main_wrap::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 40%;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.6));
+  }
+
+
+
+  /* ---------- ABOUT (노트 카드) ---------- */
+  .sec01 { padding: 100px 20px 150px; }
+  .about_tit {
+    display: none;
+  }
+  .sec01_wrap {
+    width: auto;
+    max-width: 500px;
+    margin: auto;
+    padding: 25px;
+    box-shadow: 6px 6px 0 #bbe308;
+    font-size: 13px;
+    line-height: 1.8;
+  }
+  .sec01_wrap::before {                     
+    /* 테이프 */
+    top: -12px; 
+    left: 50%;
+    width: 70px; 
+    height: 22px;
+  }
+
+  
+ /* sec02 */
+  .member_wrap { padding: 0 20px; }
+  .dot { width: 12px; height: 12px; margin-right: 8px; }
+
+  /* ---------- PROFILE ---------- */
+  /* 멤버 칩 (원형, 가로 스크롤) */
+  .member_list ul {
+    flex-wrap: nowrap;
+    gap: 10px;
+    border: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .member_list ul::-webkit-scrollbar { display: none; }
+  .member_list li { flex: 0 0 auto; }
+  .member_list a {
+    --c: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px; 
+    height: 40px;
+    margin: 0; 
+    padding: 0;
+    border: 2px solid var(--c);
+    border-radius: 50%;
+    opacity: 1;
+    font-size: 0;                           /*원래 글자 숨김*/
+    color: var(--c);
+  }
+  .member_list a::before {                  /* JS가 넣은 이니셜 */
+    content: attr(data-ini);
+    font-family: var(--font-body);
+    font-size: 10px;
+  }
+  .member_list li.on a { background: var(--c); border-color: var(--c); color: #000; }
+  .member_list a[data-member="sion"]   { --c: #a66bff; }
+  .member_list a[data-member="riku"]   { --c: #e85e5e; }
+  .member_list a[data-member="yushi"]  { --c: #75c3ff; }
+  .member_list a[data-member="jaehee"] { --c: #3fb86b; }
+  .member_list a[data-member="ryo"]    { --c: #f7e21e; }
+  .member_list a[data-member="sakuya"] { --c: #ff8ebf; }
+
+  /* 사진 카드 + 이름 오버레이 */
+  .sec02 .member_body { 
+    display: block; 
+    position: relative; 
+    margin: 22px -20px 0; 
+  }   /* 좌우 20px 상쇄 → 화면 꽉 */
+  .sec02 .member_body .member { 
+    width: 100%; 
+    max-width: none; 
+    height: 550px; 
+    margin: 0; 
+  }
+  .sec02 .member_body .member img { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+    object-position: center top; 
+  }
+  .member_count {
+    display: block;
+    position: absolute; 
+    top: 14px; 
+    left: 14px; 
+    z-index: 2;
+    padding: 4px 8px;
+    background: #000; color: #fff;
+    font-family: var(--font-body); font-size: 11px;
+  }
+  .member_info {
+    position: absolute; left: 0; right: 0; bottom: 0;
+    width: auto;
+    padding: 90px 16px 18px;
+    background: linear-gradient(180deg, rgba(74, 74, 74, 0), #4a4a4a 70%);
+    text-align: left;
+  }
+  .member_name { font-size: 15vw; margin: 0; }   /* 6글자(JAEHEE)도 안 넘치게 */
+  .info_rows { display: flex; align-items: center; gap: 14px; margin-top: 10px; border: 0; }
+  .info_rows li { padding: 0; border: 0; font-size: 14px; color: #fff;}
+  .info_rows li span:first-child { display: none; }   /* BIRTH / COLOR 라벨 숨김 */
+
+
+  /* 섹션 제목 */
+  .sec03 h2,
+  .sec4_wrap h2,
+  .sec05_wrap h2 { font-size: 36px; }
+  .sec03 h2 { padding: 16px; }
+  .sec4_wrap h2 { padding: 16px 16px 24px; }
+
+  /* sec04 */
+  .sec04 figure { grid-template-columns: 1fr; }
+  .sec04 figure a:nth-child(n+4) { display: none; }
+  .video_logo img { width: 100px; padding: 16px; }
+
+  /* sec05 */
+  .sec05 {
+    word-break: keep-all;
+  }
+  .sec05_wrap h2 { padding: 24px 0 50px; }
+  .sec05_wrap article {height: 80px;}
+  .sec05_wrap article a { padding: 22px 10px;}
+  .sec05_wrap .date { font-size: 10px; margin-bottom: 10px; }
+  .sec05_wrap article p {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  .paging { gap: 8px; margin-top: 40px; }
+  .paging a { width: 40px; height: 40px; line-height: 38px; }
+
+  /* sec06 */
+  .sec06 {
+    padding: 80px 0 0;
+  }
+
+  /* 2열 레이아웃 */
+  .sec06_cols {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .sec06_left,
+  .sec06_right {
+    gap: 48px;
+    padding: 0;
+    padding-bottom: 20px;
+  }
+
+  .sec06_wrap h2 {
+    font-size: 70px;
+    margin-bottom: -30px;
+    margin-left: 0;
+  }
+
+  /* 폴라로이드 프레임 */
+  .sec06_cols figure {
+    padding: 20px 20px 80px;
+  }
+
+  /* ---------- GALLERY (2열 엇갈림) ---------- */
+  .sec06_right {
+    margin-top: 0;
+  }
+
+  .sec06_txt {
+    padding-top: 60px;
+    text-align: center;
+  }
+
+  /* data-name 이름표 */
+  .sec06_cols figure::before {
+    left: 15px;
+    bottom: 65px;
+    padding: 4px 10px;
+    font-size: 13px;
+  }
+
+  /* 별 스티커 공통 */
+  .sec06_left figure:nth-child(1)::after,
+  .sec06_left figure:nth-child(3)::after,
+  .sec06_right figure:nth-child(3)::after {
+    width: 58px;
+    height: 58px;
+  }
+
+  /* 시온 - 노란색 별 */
+  .sec06_left figure:nth-child(1)::after {
+    right: -14px;
+    bottom: -28px;
+    transform: rotate(-30deg);
+  }
+
+  /* 재희 - 파란색 별 */
+  .sec06_right figure:nth-child(3)::after {
+    top: -24px;
+    right: -15px;
+    transform: rotate(-50deg);
+  }
+
+  /* 사쿠야 - 분홍색 별 */
+  .sec06_left figure:nth-child(3)::after {
+    left: -18px;
+    bottom: -25px;
+    transform: rotate(-88deg);
+  }
+
+  /* 프로필 슬라이드 효과 */
+  @keyframes slideNext { from { transform: translateX(48px); opacity: 0; } to { transform: none; opacity: 1; } }
+  @keyframes slidePrev { from { transform: translateX(-48px); opacity: 0; } to { transform: none; opacity: 1; } }
+  .member_body.go-next { animation: slideNext 0.35s ease; }
+  .member_body.go-prev { animation: slideNext 0.35s ease; }
+}
+
+
+/* 작은 모바일 */
+@media (max-width: 519px) {
+  main {
+    background: url("../img/main03.jpg") 48% / cover no-repeat;
+  }
+  .desc_wrap {
+    top: 85%;
+    left: 20px;
+    line-height: 40px;
+  }
+  .play {
+    bottom: 7%;
+    right: 20px;
+  }
+
+  .play img {
+    width: 40px;
+  }
+  .desc_wrap .sub {
+    font-size: 11px;
+  }
+  .spy {font-size: 42px; margin-bottom: 0;}
+  .logo_wrap img {
+    width: 130px;
+  }
+}
+
+/* 작은 모바일 ~440 */
+@media (max-width: 440px) {
+  .sec06_wrap {
+    padding: 80px 36px;
+  }
+  .sec06_left,
+  .sec06_right {
+    gap: 20px;
+  }
+
+  .sec06_wrap h2 {
+    font-size: 40px;
+    margin-bottom: -10px;
+  }
+
+  /* 폴라로이드 프레임 */
+  .sec06_cols figure {
+    padding: 15px 15px 30px;
+  }
+  /* data-name 이름표 */
+  .sec06_cols figure::before {
+    left: 8px;
+    bottom: 7px;
+    padding: 3px 6px;
+    font-size: 10px;
+  }
+  /* 별 스티커 공통 */
+  .sec06_left figure:nth-child(1)::after,
+  .sec06_left figure:nth-child(3)::after,
+  .sec06_right figure:nth-child(3)::after {
+    width: 38px;
+    height: 38px;
+  }
+  .sec06_txt {font-size: 20px;}
+}
